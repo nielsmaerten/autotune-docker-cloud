@@ -2,14 +2,14 @@
   <div class="mx-2">
     <div class="columns is-centered">
       <acHeader class="column is-two-thirds"></acHeader>
-      <hr>
+      <hr />
     </div>
     <div class="columns is-centered">
-      <acForm 
-      class="column is-two-thirds" 
-      v-show="!isProcessing && !isComplete" 
-      @onResults="handleResults"
-      @onProcessing="isProcessing = true"
+      <acForm
+        class="column is-two-thirds"
+        v-show="!isProcessing && !isComplete"
+        @onResults="handleResults"
+        @onProcessing="isProcessing = true"
       ></acForm>
       <acProcessing v-if="isProcessing"></acProcessing>
       <acResults :results="results" v-if="results"></acResults>
@@ -36,7 +36,7 @@ export default {
       isProcessing: false,
       isComplete: false,
       results: undefined
-    }
+    };
   },
   methods: {
     async handleResults(results) {

@@ -5,11 +5,12 @@
         <p>Warning!</p>
       </div>
       <div class="message-body">
-        This site is an experiment, and only provided for reference and learning purposes. You should never rely on
-        it to make medical decisions. Talk to your doctor!
+        This site is an experiment, and only provided for reference and learning
+        purposes. You should never rely on it to make medical decisions. Talk to
+        your doctor!
         <div class="field mt-4">
           <label class="checkbox">
-            <input type="checkbox" v-model="acceptedDisclaimer">
+            <input type="checkbox" v-model="acceptedDisclaimer" />
             I understand
           </label>
         </div>
@@ -18,9 +19,11 @@
     <div class="field">
       <label class="label">Nightscout site</label>
       <div class="control">
-        <input v-model="nsHost" class="input" type="text">
+        <input v-model="nsHost" class="input" type="text" />
       </div>
-      <p class="help is-danger" v-show="!isValidUrl">Are you sure this URL is correct?</p>
+      <p class="help is-danger" v-show="!isValidUrl">
+        Are you sure this URL is correct?
+      </p>
     </div>
 
     <div class="field">
@@ -35,15 +38,17 @@
           type="password"
           placeholder="••••"
           :required="updateNsProfile"
-        >
+        />
       </div>
-      <p class="help is-info" v-show="updateNsProfile">Required if profile needs to be auto-updated.</p>
+      <p class="help is-info" v-show="updateNsProfile">
+        Required if profile needs to be auto-updated.
+      </p>
     </div>
 
     <div class="field">
       <label class="label">Min. 5 minute carb impact</label>
       <div class="control">
-        <input v-model="min5mCarbimpact" class="input" type="number">
+        <input v-model="min5mCarbimpact" class="input" type="number" />
       </div>
       <p class="help is-success"></p>
     </div>
@@ -51,14 +56,14 @@
     <div class="field">
       <label class="label">Days to process</label>
       <div class="control">
-        <input v-model="startDaysAgo" required class="input" type="number">
+        <input v-model="startDaysAgo" required class="input" type="number" />
       </div>
       <p class="help is-success"></p>
     </div>
 
     <div class="field">
       <label class="checkbox">
-        <input type="checkbox" v-model="categorizeUamAsBasal">
+        <input type="checkbox" v-model="categorizeUamAsBasal" />
         Categorize UAM as basal
       </label>
     </div>
@@ -74,7 +79,13 @@
     <div class="field">
       <label class="label">Profile name</label>
       <div class="control">
-        <input class="input" :disabled="updateNsProfile" required type="text" v-model="profileName">
+        <input
+          class="input"
+          :disabled="updateNsProfile"
+          required
+          type="text"
+          v-model="profileName"
+        />
       </div>
       <p class="help is-success"></p>
     </div>
@@ -85,21 +96,24 @@
       </div>
       <div class="message-body">
         Autotune Cloud will only update a profile with the name 'Autotune Sync'.
-        If your Nightscout site does not yet have a profile with that name, create one by duplicating
-        your existing profile and renaming it.
-        <br>This is enforced so that you'll always have a backup of your original profile that won't be overwritten.
+        If your Nightscout site does not yet have a profile with that name,
+        create one by duplicating your existing profile and renaming it.
+        <br />This is enforced so that you'll always have a backup of your
+        original profile that won't be overwritten.
       </div>
     </article>
 
     <div class="field">
       <label class="checkbox">
-        <input type="checkbox" v-model="updateNsProfile">
+        <input type="checkbox" v-model="updateNsProfile" />
         Auto-update Nightscout site with results
       </label>
     </div>
 
     <div class="field">
-      <button class="button is-primary" :disabled="!isFormValid" type="submit">Run Autotune</button>
+      <button class="button is-primary" :disabled="!isFormValid" type="submit">
+        Run Autotune
+      </button>
     </div>
   </form>
 </template>
@@ -139,16 +153,16 @@ export default {
           request.searchParams.append("updateNsProfile", this.updateNsProfile);
         }
       }
-        
 
       this.$emit("onProcessing");
       let response = await fetch(request);
 
-      let results = (await response.text())
+      let results = await response.text();
       if (response.status !== 200) {
         this.$emit(
           "onResults",
-          "Sorry, something went wrong. Details: " + results);
+          "Sorry, something went wrong. Details: " + results
+        );
       } else {
         this.$emit("onResults", results);
       }
