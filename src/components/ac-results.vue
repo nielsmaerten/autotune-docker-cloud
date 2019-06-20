@@ -1,6 +1,6 @@
 <template>
   <div class="has-text-centered mx-5">
-    <pre
+    <pre class="has-text-left"
       >{{ results }}
 Generated using: https://autotune.diabase.app
 Do not use these values without first consulting your doctor.</pre
