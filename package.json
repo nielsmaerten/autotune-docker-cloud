@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "deploy": "firebase deploy",
+    "deploy": "firebase deploy --only hosting,functions:autotuneCron",
     "predeploy": "npm run build",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
