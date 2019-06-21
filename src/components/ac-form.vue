@@ -65,6 +65,10 @@
       <label class="checkbox">
         <input type="checkbox" v-model="categorizeUamAsBasal" />
         Categorize UAM as basal
+        <a
+          href="https://openaps.readthedocs.io/en/latest/docs/Customize-Iterate/autotune.html#optional-configurations"
+          >(?)</a
+        >
       </label>
     </div>
 
@@ -112,9 +116,30 @@
 
     <div class="field">
       <button class="button is-primary" :disabled="!isFormValid" type="submit">
-        Run Autotune
+        Run Autotune once
+      </button>
+      <button class="button is-info ml-4" @click.prevent="showAlphaInfo = true">
+        Run Autotune daily
       </button>
     </div>
+    <article class="message is-info is-small" v-if="showAlphaInfo">
+      <div class="message-header">
+        <p>Running Autotune daily</p>
+      </div>
+      <div class="message-body">
+        If you're running an OpenAPS rig, you have the option to run Autotune
+        overnight and tune your basals daily.
+        <br />
+        This option is not available if you're using another looping system,
+        like AndroidAPS. My original goal in building this service was to
+        provide daily Autotunes for everyone.
+        <br />
+        Daily Autotune is currently in private alpha. If you're interested in
+        trying it, reach out to me through
+        <a href="https://gitter.im/openaps/autotune">Gitter</a> or
+        <a href="https://github.com/nielsmaerten">Github</a>
+      </div>
+    </article>
   </form>
 </template>
 
@@ -131,8 +156,9 @@ export default {
       profileName: "Default",
       nsSecret: "",
       acceptedDisclaimer: false,
-      startDaysAgo: 30,
-      categorizeUamAsBasal: false
+      startDaysAgo: 21,
+      categorizeUamAsBasal: false,
+      showAlphaInfo: false
     };
   },
   methods: {
