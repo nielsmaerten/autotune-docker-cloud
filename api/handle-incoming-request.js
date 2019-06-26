@@ -60,6 +60,9 @@ module.exports = async (req, res) => {
       req.query.min5mCarbimpact
     );
 
+    // TODO: move this to nsProfileConvert !!!!!
+    autotuneProfile.curve = "ultra-rapid"
+
     // Save the profile to the working directory
     fs.writeFileSync(profilePath, JSON.stringify(autotuneProfile));
   } catch (e) {
