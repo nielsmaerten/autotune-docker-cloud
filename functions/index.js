@@ -8,7 +8,8 @@ const autotuneUri = "https://run-autotune.diabase.app";
 admin.initializeApp();
 
 module.exports.autotuneCron = functions.pubsub
-  .schedule("every 24 hours")
+  .schedule("30 0 * * *")
+  .timeZone("Europe/Brussels")
   .onRun((/*context*/) => {
     console.log("Starting Autotune Cron...");
     return admin
