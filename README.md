@@ -1,3 +1,6 @@
+# DEPRECATED
+## Check out https://github.com/nielsmaerten/autotune-cloud for the new version of this project.
+## =======================
 # Autotune Docker Cloud
 
 ### https://autotune.diabase.app <== Try it out :)
